@@ -1,0 +1,62 @@
+@model HairAndSoleless.Models.Activity
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Heading)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Heading)
+    @Html.ValidationMessageFor(model => model.Heading)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.NumberOfHours)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.NumberOfHours)
+    @Html.ValidationMessageFor(model => model.NumberOfHours)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Date)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Date)
+    @Html.ValidationMessageFor(model => model.Date)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Comments)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Comments)
+    @Html.ValidationMessageFor(model => model.Comments)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.I)
+</div>
+
+<div class="editor-label">
+    Coach
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.CoachId, ((IEnumerable<HairAndSoleless.Models.Coach>)ViewBag.PossibleCoaches).Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option.Name), 
+        Value = option.CoachId.ToString(),
+        Selected = (Model != null) && (option.CoachId == Model.CoachId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.CoachId)
+</div>
+<div class="editor-label">
+    Customer
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.CustomerId, ((IEnumerable<HairAndSoleless.Models.Customer>)ViewBag.PossibleCustomers).Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option.Name), 
+        Value = option.CustomerId.ToString(),
+        Selected = (Model != null) && (option.CustomerId == Model.CustomerId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.CustomerId)
+</div>

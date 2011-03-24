@@ -1,0 +1,26 @@
+@model HairAndSoleless.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Customer</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">@Model.Name</div>
+
+    <div class="display-label">Contact</div>
+    <div class="display-field">@Model.Contact</div>
+
+    <div class="display-label">Activities</div>
+    <div class="display-field">@(Model.Activities == null ? "None" : Model.Activities.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CustomerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

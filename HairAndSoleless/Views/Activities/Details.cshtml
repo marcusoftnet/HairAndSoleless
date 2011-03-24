@@ -1,0 +1,38 @@
+@model HairAndSoleless.Models.Activity
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Activity</legend>
+
+    <div class="display-label">Heading</div>
+    <div class="display-field">@Model.Heading</div>
+
+    <div class="display-label">NumberOfHours</div>
+    <div class="display-field">@Model.NumberOfHours</div>
+
+    <div class="display-label">Date</div>
+    <div class="display-field">@String.Format("{0:g}", Model.Date)</div>
+
+    <div class="display-label">Comments</div>
+    <div class="display-field">@Model.Comments</div>
+
+    <div class="display-label">Coach</div>
+    <div class="display-field">@(Model.Coach == null ? "None" : Model.Coach.Name)</div>
+
+    <div class="display-label">Customer</div>
+    <div class="display-field">@(Model.Customer == null ? "None" : Model.Customer.Name)</div>
+
+    <div class="display-label">I</div>
+    <div class="display-field">@Model.I</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ActivityId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

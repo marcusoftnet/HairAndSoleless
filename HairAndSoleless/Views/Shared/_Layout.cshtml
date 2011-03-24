@@ -1,0 +1,39 @@
+﻿@using HairAndSoleless.Helpers;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript" ></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.date').datepicker({ dateFormat: 'yy-mm-dd' });
+        });
+    </script>
+</head>
+<body>
+    <div class="page">
+        <div id="header">
+            <div id="title">
+                <h1>
+                    Avega Coach Activity log</h1>
+            </div>
+            <div id="menucontainer">
+                <ul id="menu">
+                    @Html.Raw(Html.MenuItem("Activities", "Index", "Activities"))
+                    @Html.Raw(Html.MenuItem("Coaches", "Index", "Coaches"))
+                    @Html.Raw(Html.MenuItem("Customers", "Index", "Customers"))
+                </ul>
+            </div>
+        </div>
+        <div id="main">
+            @RenderBody()
+            <div id="footer">
+                Avega Coach Activity log &copy; Copyright 2011 www.marcusoft.net</div>
+        </div>
+    </div>
+</body>
+</html>

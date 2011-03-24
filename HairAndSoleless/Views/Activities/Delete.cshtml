@@ -1,0 +1,41 @@
+@model HairAndSoleless.Models.Activity
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Activity</legend>
+
+    <div class="display-label">Heading</div>
+    <div class="display-field">@Model.Heading</div>
+
+    <div class="display-label">NumberOfHours</div>
+    <div class="display-field">@Model.NumberOfHours</div>
+
+    <div class="display-label">Date</div>
+    <div class="display-field">@String.Format("{0:g}", Model.Date)</div>
+
+    <div class="display-label">Comments</div>
+    <div class="display-field">@Model.Comments</div>
+
+    <div class="display-label">Coach</div>
+    <div class="display-field">@(Model.Coach == null ? "None" : Model.Coach.Name)</div>
+
+    <div class="display-label">Customer</div>
+    <div class="display-field">@(Model.Customer == null ? "None" : Model.Customer.Name)</div>
+
+    <div class="display-label">I</div>
+    <div class="display-field">@Model.I</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

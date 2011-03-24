@@ -1,0 +1,66 @@
+﻿<#@ template language="C#" HostSpecific="True"  inherits="DynamicTransform" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="EnvDTE" #>
+<#@ Output Extension="vb" #>
+Imports System.Data.Entity
+Imports System.Linq.Expressions
+<# if((!string.IsNullOrEmpty(Model.ModelTypeNamespace)) && (Model.ModelTypeNamespace != Model.RepositoryNamespace)) { #>
+Imports <#= Model.ModelTypeNamespace #>
+<# } #>
+
+<#= T4Scaffolding.Namespaces.BeginVb(Model.RepositoryNamespace, Model.DefaultNamespace) #>
+<# 
+	var modelType = (CodeType)Model.ModelType; 
+	var modelName = modelType.Name; 
+	var modelNamePlural = Model.ModelTypePluralized; 
+	var contextName = Model.DbContextType; 
+	var primaryKeyProperty = modelType.VisibleMembers().OfType<CodeProperty>().Single(x => x.Name == Model.PrimaryKey);
+#>
+    Public Class <#= modelName #>Repository : Implements I<#= modelName #>Repository
+        Private context As <#= contextName #> = New <#= contextName #>()
+
+        Public Function GetAll<#= modelNamePlural #>(ByVal ParamArray includeProperties() As Expression(Of Func(Of <#= modelName #>, Object))) As IEnumerable(Of <#= modelName #>) Implements I<#= modelName #>Repository.GetAll<#= modelNamePlural #>
+			Dim query As IQueryable(Of <#= modelName #>) = context.<#= modelNamePlural #>
+			For Each includeProperty In includeProperties
+				query = query.Include(includeProperty)
+			Next
+			Return query.ToList()
+        End Function
+
+        Public Function GetById(id As <#= primaryKeyProperty.Type.AsString #>) As <#= modelName #> Implements I<#= modelName #>Repository.GetById
+            Return context.<#= modelNamePlural #>.Find(id)
+        End Function
+
+        Public Sub InsertOrUpdate(<#= modelName.ToLower() #> As <#= modelName #>) Implements I<#= modelName #>Repository.InsertOrUpdate
+            context.<#= modelNamePlural #>.Add(<#= modelName.ToLower() #>)
+			If <#= modelName.ToLower() #>.<#= Model.PrimaryKey #> = Nothing Then
+				' New entity
+<# if(primaryKeyProperty.Type.AsString == "System.Guid") { #>
+				<#= modelName.ToLower() #>.<#= primaryKeyProperty.Name #> = Guid.NewGuid()
+<# } #>
+				context.<#= modelNamePlural #>.Add(<#= modelName.ToLower() #>)
+			Else
+				' Existing entity
+				context.<#= modelNamePlural #>.Attach(<#= modelName.ToLower() #>)
+                context.Entry(<#= modelName.ToLower() #>).State = EntityState.Modified
+			End If
+        End Sub
+
+        Public Sub Delete(id As <#= primaryKeyProperty.Type.AsString #>) Implements I<#= modelName #>Repository.Delete
+            Dim <#= modelName.ToLower() #> = context.<#= modelNamePlural #>.Find(id)
+            context.<#= modelNamePlural #>.Remove(<#= modelName.ToLower() #>)
+        End Sub
+
+        Public Sub Save() Implements I<#= modelName #>Repository.Save
+            context.SaveChanges()
+        End Sub
+    End Class
+
+	Public Interface I<#= modelName #>Repository
+        Function GetAll<#= modelNamePlural #>(ByVal ParamArray includeProperties() As Expression(Of Func(Of <#= modelName #>, Object))) As IEnumerable(Of <#= modelName #>)
+		Function GetById(id As <#= primaryKeyProperty.Type.AsString #>) As <#= modelName #>
+		Sub InsertOrUpdate(<#= modelName.ToLower() #> As <#= modelName #>)
+        Sub Delete(id As <#= primaryKeyProperty.Type.AsString #>)
+        Sub Save()
+    End Interface
+<#= T4Scaffolding.Namespaces.EndVb(Model.RepositoryNamespace, Model.DefaultNamespace) #>

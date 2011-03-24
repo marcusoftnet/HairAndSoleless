@@ -1,0 +1,29 @@
+@model HairAndSoleless.Models.Coach
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Coach</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">@Model.Name</div>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">@Model.Email</div>
+
+    <div class="display-label">Team</div>
+    <div class="display-field">@Model.Team</div>
+
+    <div class="display-label">Activities</div>
+    <div class="display-field">@(Model.Activities == null ? "None" : Model.Activities.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CoachId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

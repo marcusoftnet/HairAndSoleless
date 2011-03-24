@@ -1,0 +1,9 @@
+﻿@model DateTime?
+@if (Model.HasValue)
+{
+    @Html.TextBox("", Model.Value.ToShortDateString(), new { @class = "date" });
+}
+else
+{
+    @Html.TextBox("", DateTime.Now.ToShortDateString(), new { @class = "date" });
+}

@@ -1,0 +1,65 @@
+@model IEnumerable<HairAndSoleless.Models.Activity>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Heading
+        </th>
+        <th>
+            NumberOfHours
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Comments
+        </th>
+        <th>
+            Coach
+        </th>
+        <th>
+            Customer
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ActivityId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ActivityId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ActivityId })
+        </td>
+        <td>
+			@item.Heading
+        </td>
+        <td>
+			@item.NumberOfHours
+        </td>
+        <td>
+			@String.Format("{0:g}", item.Date)
+        </td>
+        <td>
+			@item.Comments
+        </td>
+        <td>
+			@(item.Coach == null ? "None" : item.Coach.Name)
+        </td>
+        <td>
+			@(item.Customer == null ? "None" : item.Customer.Name)
+        </td>
+    </tr>
+}
+
+</table>
+
+
