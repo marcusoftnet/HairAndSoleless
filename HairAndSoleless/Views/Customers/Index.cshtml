@@ -1,7 +1,7 @@
 @model IEnumerable<HairAndSoleless.Models.Customer>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Customers";
 }
 
 <h2>Index</h2>
@@ -24,19 +24,19 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr id="@item.CustomerId">
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.CustomerId }) |
             @Html.ActionLink("Details", "Details", new { id=item.CustomerId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.CustomerId })
         </td>
-        <td>
+        <td id="Name">
 			@item.Name
         </td>
-        <td>
+        <td id="Contact">
 			@item.Contact
         </td>
-        <td>
+        <td id="Activities">
 			@(item.Activities == null ? "None" : item.Activities.Count.ToString())
         </td>
     </tr>

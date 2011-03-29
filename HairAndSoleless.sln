@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairAndSoleless", "HairAndSoleless\HairAndSoleless.csproj", "{0EACCC80-C08C-4DAB-86E5-91932429AC00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Specs.EndToEnd", "Specs.EndToEnd\Specs.EndToEnd.csproj", "{4BA1E57D-1739-4E93-8087-327B0F3483F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{0EACCC80-C08C-4DAB-86E5-91932429AC00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EACCC80-C08C-4DAB-86E5-91932429AC00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EACCC80-C08C-4DAB-86E5-91932429AC00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BA1E57D-1739-4E93-8087-327B0F3483F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BA1E57D-1739-4E93-8087-327B0F3483F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BA1E57D-1739-4E93-8087-327B0F3483F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BA1E57D-1739-4E93-8087-327B0F3483F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
