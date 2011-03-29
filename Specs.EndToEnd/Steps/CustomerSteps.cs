@@ -18,12 +18,6 @@ namespace Specs.EndToEnd.Steps
         {
             Page.GotoNewCustomer();
         }
-
-        [Then(@"I should be on the 'Customers' page")]
-        public void IShouldBeOnCustomerPage()
-        {
-            Page.Title.Should().Equal("Customers");
-        }
         
         [Then(@"a customer named '(.*)' should be in the customer list")]
         public void CustomerNameAmongNames(string customerName)

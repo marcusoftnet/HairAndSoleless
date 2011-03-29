@@ -17,13 +17,6 @@ namespace Specs.EndToEnd.Steps
             Page.Submit();
         }
 
-        [Then(@"I should be on the 'Create Customer' page")]
-        [Then(@"I should still be on the 'Create Customer' page")]
-        public void ThenIShouldBeOnTheCreatePage()
-        {
-            Page.Title.Should().Equal("Create");
-        }
-
         [Given(@"I am on the 'Create Customer' page")]
         public void IAmOnTheCreateCustomerPage()
         {

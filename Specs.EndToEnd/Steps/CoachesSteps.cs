@@ -18,11 +18,7 @@ namespace Specs.EndToEnd.Steps
             Page.GotoNewCoach();
         }
 
-        [Then(@"I should be on the 'Coaches' page")]
-        public void ThenIShouldBeOnTheCoachesPage()
-        {
-            Page.Title.Should().Equal("Coaches"); // TODO: General step?
-        }
+        
 
         [Then(@"a customer named '(.*)' should be in the coach list")]
         public void ThenACustomerNamedTestCoachShouldBeInTheCoachList(string coachName)

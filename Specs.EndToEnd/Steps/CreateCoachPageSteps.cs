@@ -1,4 +1,5 @@
 ﻿using Should.Fluent;
+using Specs.EndToEnd.Steps.Infrastructure;
 using Specs.EndToEnd.Steps.PageObjects;
 using TechTalk.SpecFlow;
 
@@ -7,12 +8,7 @@ namespace Specs.EndToEnd.Steps
     [Binding]
     public class CreateCoachPageSteps : StepsForPage<CreateCoachPage>
     {
-        [Then(@"I should be on the 'Create Coach' page")]
-        [Then(@"I should still be on the 'Create Coach' page")]
-        public void ThenIShouldBeOnTheCreateCoachPage()
-        {
-            Page.Title.Should().Equal("Create Coach");
-        }
+      
 
         [Given(@"I am on the 'Create Coach' page")]
         public void BeOnTheCreateCoachPage()

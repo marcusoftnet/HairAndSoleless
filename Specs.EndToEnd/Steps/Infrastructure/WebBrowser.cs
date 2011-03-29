@@ -12,17 +12,17 @@ namespace Specs.EndToEnd.Steps.Infrastructure
         {
             get
             {
-                if (!ScenarioContext.Current.ContainsKey(BROWSER_KEY))
-                    ScenarioContext.Current[BROWSER_KEY] = new IE();
-                return (IE)ScenarioContext.Current[BROWSER_KEY];
+                if (!FeatureContext.Current.ContainsKey(BROWSER_KEY))
+                    FeatureContext.Current[BROWSER_KEY] = new IE();
+                return (IE)FeatureContext.Current[BROWSER_KEY];
             }
         }
 
-        [AfterScenario] // TODO: AfterTestRun?
+        [AfterFeature]
         public static void Close()
         {
-            if (ScenarioContext.Current.ContainsKey(BROWSER_KEY))
-                WebBrowser.Current.Close();
+            if (FeatureContext.Current.ContainsKey(BROWSER_KEY))
+                Current.Close();
         }
     }
 }

@@ -20,7 +20,7 @@ Scenario: Creating new coach without validation errors
 Scenario Outline: Creating new coach with missing values should give validation error
 	Given I am on the 'Create Coach' page
 	When I create a coach with '<Field>' set to empty
-	Then a validation error for '<Field>' should be displayed
+	Then a required field validation error for '<Field>' should be displayed
 		And I should still be on the 'Create Coach' page
 
 Examples:

@@ -5,19 +5,19 @@ using WatiN.Core;
 
 namespace Specs.EndToEnd.Steps.Infrastructure
 {
-   public static  class BrowserExtensions
+    public static class BrowserExtensions
     {
         public static void ClickButton(this Browser browser, string buttontext)
         {
             browser.Button(x => x.Text == buttontext).Click();
         }
 
-        public static void ClickLink(this Browser browser,string linkText)
+        public static void ClickLink(this Browser browser, string linkText)
         {
             browser.Link(x => x.Text == linkText).Click();
         }
 
-        public static void SetValue(this Browser browser,string name, string value)
+        public static void SetValue(this Browser browser, string name, string value)
         {
             var textField = browser.TextField(Find.ByName(name));
             if (textField.Exists)
@@ -42,10 +42,11 @@ namespace Specs.EndToEnd.Steps.Infrastructure
                    select c;
         }
 
-        public static bool ValidationErrorExistsFor(this Browser browser,string fieldWithError)
+        public static bool ValidationErrorExistsFor(this Browser browser, string fieldWithError)
         {
-            // TODO: Enabled
-            return browser.Spans.Count(s => s.GetAttributeValue("data-valmsg-for") == fieldWithError) == 1;
+            // TODO: Enabled?
+            return browser.Spans.Count(s => s.Enabled &&  
+                s.GetAttributeValue("data-valmsg-for") == fieldWithError) == 1;
         }
 
     }

@@ -115,7 +115,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 22
  testRunner.When(string.Format("I create a coach with \'{0}\' set to empty", field));
 #line 23
- testRunner.Then(string.Format("a validation error for \'{0}\' should be displayed", field));
+ testRunner.Then(string.Format("a required field validation error for \'{0}\' should be displayed", field));
 #line 24
   testRunner.And("I should still be on the \'Create Coach\' page");
 #line hidden
