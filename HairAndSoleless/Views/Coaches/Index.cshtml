@@ -1,7 +1,7 @@
 @model IEnumerable<HairAndSoleless.Models.Coach>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Coaches";
 }
 
 <h2>Index</h2>
@@ -33,13 +33,13 @@
             @Html.ActionLink("Details", "Details", new { id=item.CoachId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.CoachId })
         </td>
-        <td>
+        <td id="Name">
 			@item.Name
         </td>
-        <td>
+        <td id="Email">
 			@item.Email
         </td>
-        <td>
+        <td id="Team">
 			@item.Team
         </td>
         <td>

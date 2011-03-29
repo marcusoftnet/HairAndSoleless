@@ -84,13 +84,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\EntityFramework.SqlServerCompact.cs" />
+    <Compile Include="Specs\CreateNewCoach.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateNewCoach.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\GenericBrowserSteps.cs" />
+    <Compile Include="Steps\CreateCoachPageSteps.cs" />
+    <Compile Include="Steps\CoachesSteps.cs" />
     <Compile Include="Steps\DBSteps.cs" />
     <Compile Include="Steps\CreateCustomerSteps.cs" />
+    <Compile Include="Steps\Infrastructure\BrowserExtensions.cs" />
     <Compile Include="Steps\Infrastructure\DbHelper.cs" />
     <Compile Include="Steps\Infrastructure\WebBrowser.cs" />
+    <Compile Include="Steps\PageObjects\CochesPage.cs" />
+    <Compile Include="Steps\PageObjects\CreateCoachPage.cs" />
     <Compile Include="Steps\PageObjects\CreateCustomerPage.cs" />
     <Compile Include="Steps\PageObjects\PageObjectBase.cs" />
-    <Compile Include="Steps\PageObjects\CustomerListingPage.cs" />
+    <Compile Include="Steps\PageObjects\CustomersPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -103,7 +114,7 @@
       <DependentUpon>CreateNewCustomer.feature</DependentUpon>
     </Compile>
     <Compile Include="Steps\CustomerSteps.cs" />
-    <Compile Include="Steps\PageSteps.cs" />
+    <Compile Include="Steps\StepsForPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -111,6 +122,10 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Specs\CreateNewCoach.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreateNewCoach.feature.cs</LastGenOutput>
     </None>
     <None Include="Specs\CreateNewCustomer.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

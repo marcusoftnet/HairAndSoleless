@@ -6,7 +6,7 @@ using TechTalk.SpecFlow.Assist;
 namespace Specs.EndToEnd.Steps
 {
     [Binding]
-    public class CustomerCreateSteps : PageSteps<CustomersCreatePage>
+    public class CustomerCreateSteps : StepsForPage<CustomersCreatePage>
     {
         [When(@"I create the following customer")]
         public void ICreateTheFollowingCustomer(Table table)
@@ -29,11 +29,13 @@ namespace Specs.EndToEnd.Steps
         {
             Page.Visit();
         }
-
-        [Then(@"a validation error for '(.*)' should be displayed")]
-        public void ThenAValidationErrorShouldBeDisplayed(string fieldWithError)
+        
+        [When(@"I create a customer with '(.*)' set to empty")]
+        public void CreateCustomerWithFieldEmpty(string fieldName)
         {
-            Page.ValidationErrorExistsFor(fieldWithError).Should().Not.Be.False();
+            Page.SetDefaultData();
+            Page.SetValue(fieldName, string.Empty);
+            Page.Submit();
         }
 
     }

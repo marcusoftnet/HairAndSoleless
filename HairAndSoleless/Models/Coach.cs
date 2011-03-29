@@ -13,6 +13,7 @@ namespace HairAndSoleless.Models
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [Required]
         public string Team { get; set; }
 
         public virtual ICollection<Activity> Activities { get; set; }

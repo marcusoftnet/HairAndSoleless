@@ -1,4 +1,5 @@
-﻿using Specs.EndToEnd.Steps.Infrastructure;
+﻿using System;
+using Specs.EndToEnd.Steps.Infrastructure;
 
 namespace Specs.EndToEnd.Steps.PageObjects
 {
@@ -11,26 +12,23 @@ namespace Specs.EndToEnd.Steps.PageObjects
         private const string DEFAULT_CONTACT = "test@testinginc.com";
 
         public CustomersCreatePage() : base(WebBrowser.Current, "/Customers/Create") { }
-
-        public void SetDefaultValues()
-        {
-            NameField = DEFAULT_NAME;
-            ContactField = DEFAULT_CONTACT;
-        }
         
         public string NameField
         {
-            get { return GetValue(NAME_FIELD); }
             set { SetValue(NAME_FIELD, value); }
         }
 
         public string ContactField
         {
-            get { return GetValue(CONTACT_FIELD); }
             set { SetValue(CONTACT_FIELD, value); }
         }
 
         public void Submit() { ClickButton("Create"); }
 
+        public void SetDefaultData()
+        {
+            NameField = DEFAULT_NAME;
+            ContactField = DEFAULT_CONTACT;
+        }
     }
 }

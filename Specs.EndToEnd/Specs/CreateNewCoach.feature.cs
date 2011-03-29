@@ -17,21 +17,21 @@ namespace Specs.EndToEnd.Specs
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.5.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Create customer")]
-    public partial class CreateCustomerFeature
+    [NUnit.Framework.DescriptionAttribute("Create coach")]
+    public partial class CreateCoachFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "CreateNewCustomer.feature"
+#line 1 "CreateNewCoach.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Create customer", "In order to keep track of the different customer we have been at\nAs an Avega Coac" +
-                    "h\nI want to be able to create a new customer", GenerationTargetLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Create coach", "In order to keep track of the different coaches that submit activities\nAs an Aveg" +
+                    "a Coach\nI want to be able to create a new coach", GenerationTargetLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -54,67 +54,70 @@ namespace Specs.EndToEnd.Specs
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Navigate to the new customer page")]
-        public virtual void NavigateToTheNewCustomerPage()
+        [NUnit.Framework.DescriptionAttribute("Navigate to the new coach page")]
+        public virtual void NavigateToTheNewCoachPage()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Navigate to the new customer page", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Navigate to the new coach page", ((string[])(null)));
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
- testRunner.Given("I am on the \'Customers\' page");
+ testRunner.Given("I am on the \'Coahces\' page");
 #line 8
- testRunner.When("I choose to create new customer");
+ testRunner.When("I choose to create new coach");
 #line 9
- testRunner.Then("I should be on the \'Create Customer\' page");
+ testRunner.Then("I should be on the \'Create Coach\' page");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Creating new customer without validation errors")]
-        public virtual void CreatingNewCustomerWithoutValidationErrors()
+        [NUnit.Framework.DescriptionAttribute("Creating new coach without validation errors")]
+        public virtual void CreatingNewCoachWithoutValidationErrors()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Creating new customer without validation errors", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Creating new coach without validation errors", ((string[])(null)));
 #line 11
 this.ScenarioSetup(scenarioInfo);
 #line 12
- testRunner.Given("there are no customers named \'Testing Inc.\' in the database");
+ testRunner.Given("there are no coaches named \'Test Coach\' in the database");
 #line 13
-  testRunner.And("I am on the \'Create Customer\' page");
+  testRunner.And("I am on the \'Create Coach\' page");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
-                        "Contact"});
+                        "Email",
+                        "Team"});
             table1.AddRow(new string[] {
-                        "Testing Inc.",
-                        "demon@testinc.com"});
+                        "Test Coach",
+                        "test@avega.se",
+                        "Test team"});
 #line 14
- testRunner.When("I create the following customer", ((string)(null)), table1);
+ testRunner.When("I create the following coach", ((string)(null)), table1);
 #line 17
- testRunner.Then("I should be on the \'Customers\' page");
+ testRunner.Then("I should be on the \'Coaches\' page");
 #line 18
-  testRunner.And("a customer named \'Testing Inc.\' should be in the customer list");
+  testRunner.And("a customer named \'Test Coach\' should be in the coach list");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Creating new customer with missing values should give validation error")]
+        [NUnit.Framework.DescriptionAttribute("Creating new coach with missing values should give validation error")]
         [NUnit.Framework.TestCaseAttribute("Name")]
-        [NUnit.Framework.TestCaseAttribute("Contact")]
-        public virtual void CreatingNewCustomerWithMissingValuesShouldGiveValidationError(string field)
+        [NUnit.Framework.TestCaseAttribute("Email")]
+        [NUnit.Framework.TestCaseAttribute("Team")]
+        public virtual void CreatingNewCoachWithMissingValuesShouldGiveValidationError(string field)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Creating new customer with missing values should give validation error", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Creating new coach with missing values should give validation error", ((string[])(null)));
 #line 20
 this.ScenarioSetup(scenarioInfo);
 #line 21
-    testRunner.Given("I am on the \'Create Customer\' page");
+ testRunner.Given("I am on the \'Create Coach\' page");
 #line 22
- testRunner.When(string.Format("I create a customer with \'{0}\' set to empty", field));
+ testRunner.When(string.Format("I create a coach with \'{0}\' set to empty", field));
 #line 23
  testRunner.Then(string.Format("a validation error for \'{0}\' should be displayed", field));
 #line 24
-  testRunner.And("I should still be on the \'Create Customer\' page");
+  testRunner.And("I should still be on the \'Create Coach\' page");
 #line hidden
             testRunner.CollectScenarioErrors();
         }

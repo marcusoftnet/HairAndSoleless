@@ -5,25 +5,18 @@ using TechTalk.SpecFlow;
 namespace Specs.EndToEnd.Steps
 {
     [Binding]
-    public class CustomersSteps
+    public class CustomersSteps : StepsForPage<CustomersPage>
     {
-        public CustomersSteps()
-        {
-            ScenarioContext.Current.Set(new CustomersPage());
-        }
-
-        private static CustomersPage Page { get { return ScenarioContext.Current.Get<CustomersPage>(); } }
-
         [Given(@"I am on the 'Customers' page")]
         public void IAmOnTheCustomerPage()
         {
             Page.Visit();
         }
 
-        [When(@"I click the 'Create New' link")]
+        [When(@"I choose to create new customer")]
         public void ClickCreateNewLink()
         {
-            Page.ClickNewLink();
+            Page.GotoNewCustomer();
         }
 
         [Then(@"I should be on the 'Customers' page")]
@@ -31,7 +24,6 @@ namespace Specs.EndToEnd.Steps
         {
             Page.Title.Should().Equal("Customers");
         }
-
         
         [Then(@"a customer named '(.*)' should be in the customer list")]
         public void CustomerNameAmongNames(string customerName)

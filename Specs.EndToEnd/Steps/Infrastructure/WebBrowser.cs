@@ -18,7 +18,7 @@ namespace Specs.EndToEnd.Steps.Infrastructure
             }
         }
 
-        [AfterScenario]
+        [AfterScenario] // TODO: AfterTestRun?
         public static void Close()
         {
             if (ScenarioContext.Current.ContainsKey(BROWSER_KEY))

@@ -7,9 +7,16 @@ namespace Specs.EndToEnd.Steps
     public class DBSteps
     {
         [Given(@"there are no customers named '(.*)' in the database")]
-        public void ThereAreNoCustomersInDbNamed(string customerName)
+        public void RemoveCustomers(string customerName)
         {
-            DbHelper.RemoveAllCustomersNamed(customerName);
+            DbHelper.RemoveCustomersByName(customerName);
         }
+
+        [Given(@"there are no coaches named '(.*)' in the database")]
+        public void RemoveCoaches(string coachName)
+        {
+            DbHelper.RemoveCoachesByName(coachName);
+        }
+
     }
 }
