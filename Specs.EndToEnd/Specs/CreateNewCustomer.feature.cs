@@ -30,8 +30,8 @@ namespace Specs.EndToEnd.Specs
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Create customer", "In order to keep track of the different customer we have been at\nAs an Avega Coac" +
-                    "h\nI want to be able to create a new customer", GenerationTargetLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Create customer", "In order to keep track of the different customer we have been at\r\nAs an Avega Coa" +
+                    "ch\r\nI want to be able to create a new customer", GenerationTargetLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -100,11 +100,11 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Creating new customer with missing values should give validation error")]
-        [NUnit.Framework.TestCaseAttribute("Name")]
-        [NUnit.Framework.TestCaseAttribute("Contact")]
-        public virtual void CreatingNewCustomerWithMissingValuesShouldGiveValidationError(string field)
+        [NUnit.Framework.TestCaseAttribute("Name", "Name", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("Contact", "Email address", new string[0])]
+        public virtual void CreatingNewCustomerWithMissingValuesShouldGiveValidationError(string field, string errorMessage, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Creating new customer with missing values should give validation error", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Creating new customer with missing values should give validation error", exampleTags);
 #line 20
 this.ScenarioSetup(scenarioInfo);
 #line 21
@@ -112,7 +112,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 22
  testRunner.When(string.Format("I create a customer with \'{0}\' set to empty", field));
 #line 23
- testRunner.Then(string.Format("a required field validation error for \'{0}\' should be displayed", field));
+ testRunner.Then(string.Format("a required field validation error for \'{0}\' should be displayed", errorMessage));
 #line 24
   testRunner.And("I should still be on the \'Create Customer\' page");
 #line hidden

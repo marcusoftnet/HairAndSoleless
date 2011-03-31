@@ -1,7 +1,5 @@
-﻿using Should.Fluent;
-using Specs.EndToEnd.Steps.PageObjects;
+﻿using Specs.EndToEnd.Steps.PageObjects;
 using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Assist;
 
 namespace Specs.EndToEnd.Steps
 {

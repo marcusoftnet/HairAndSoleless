@@ -84,11 +84,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\EntityFramework.SqlServerCompact.cs" />
+    <Compile Include="Specs\CreateNewActivity.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateNewActivity.feature</DependentUpon>
+    </Compile>
     <Compile Include="Specs\CreateNewCoach.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CreateNewCoach.feature</DependentUpon>
     </Compile>
+    <Compile Include="Steps\ActivitiesSteps.cs" />
+    <Compile Include="Steps\CreateActivitySteps.cs" />
     <Compile Include="Steps\GenericBrowserSteps.cs" />
     <Compile Include="Steps\CreateCoachPageSteps.cs" />
     <Compile Include="Steps\CoachesSteps.cs" />
@@ -97,7 +104,9 @@
     <Compile Include="Steps\Infrastructure\BrowserExtensions.cs" />
     <Compile Include="Steps\Infrastructure\DbHelper.cs" />
     <Compile Include="Steps\Infrastructure\WebBrowser.cs" />
+    <Compile Include="Steps\PageObjects\ActivitiesPage.cs" />
     <Compile Include="Steps\PageObjects\CochesPage.cs" />
+    <Compile Include="Steps\PageObjects\CreateActivityPage.cs" />
     <Compile Include="Steps\PageObjects\CreateCoachPage.cs" />
     <Compile Include="Steps\PageObjects\CreateCustomerPage.cs" />
     <Compile Include="Steps\PageObjects\PageObjectBase.cs" />
@@ -122,6 +131,10 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Specs\CreateNewActivity.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreateNewActivity.feature.cs</LastGenOutput>
     </None>
     <None Include="Specs\CreateNewCoach.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

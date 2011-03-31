@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using HairAndSoleless.Models;
 using HairAndSoleless.Models.Storage;
@@ -6,28 +12,14 @@ namespace HairAndSoleless.Controllers
 {   
     public class ActivitiesController : Controller
     {
-		private readonly ICoachRepository coachRepository;
-		private readonly ICustomerRepository customerRepository;
-		private readonly IActivityRepository activityRepository;
-
-		// If you are using Dependency Injection, you can delete the following constructor
-        public ActivitiesController() : this(new CoachRepository(), new CustomerRepository(), new ActivityRepository())
-        {
-        }
-
-        public ActivitiesController(ICoachRepository coachRepository, ICustomerRepository customerRepository, IActivityRepository activityRepository)
-        {
-			this.coachRepository = coachRepository;
-			this.customerRepository = customerRepository;
-			this.activityRepository = activityRepository;
-        }
+        private HairAndSolelessContext context = new HairAndSolelessContext();
 
         //
         // GET: /Activity/
 
         public ViewResult Index()
         {
-            return View(activityRepository.GetAllActivities(activity => activity.Coach, activity => activity.Customer));
+            return View(context.Activities.Include(activity => activity.Coach).Include(activity => activity.Customer).ToList());
         }
 
         //
@@ -35,7 +27,8 @@ namespace HairAndSoleless.Controllers
 
         public ViewResult Details(int id)
         {
-            return View(activityRepository.GetById(id));
+			Activity activity = context.Activities.Single(x => x.ActivityId == id);
+            return View(activity);
         }
 
         //
@@ -43,8 +36,8 @@ namespace HairAndSoleless.Controllers
 
         public ActionResult Create()
         {
-			ViewBag.PossibleCoaches = coachRepository.GetAllCoaches();
-			ViewBag.PossibleCustomers = customerRepository.GetAllCustomers();
+			ViewBag.PossibleCoaches = context.Coaches;
+			ViewBag.PossibleCustomers = context.Customers;
             return View();
         } 
 
@@ -54,15 +47,16 @@ namespace HairAndSoleless.Controllers
         [HttpPost]
         public ActionResult Create(Activity activity)
         {
-            if (ModelState.IsValid) {
-                activityRepository.InsertOrUpdate(activity);
-                activityRepository.Save();
-                return RedirectToAction("Index");
-            } else {
-				ViewBag.PossibleCoaches = coachRepository.GetAllCoaches();
-				ViewBag.PossibleCustomers = customerRepository.GetAllCustomers();
-				return View();
-			}
+            if (ModelState.IsValid)
+            {
+				context.Activities.Add(activity);
+				context.SaveChanges();
+				return RedirectToAction("Index");  
+            }
+
+			ViewBag.PossibleCoaches = context.Coaches;
+			ViewBag.PossibleCustomers = context.Customers;
+            return View(activity);
         }
         
         //
@@ -70,9 +64,10 @@ namespace HairAndSoleless.Controllers
  
         public ActionResult Edit(int id)
         {
-			ViewBag.PossibleCoaches = coachRepository.GetAllCoaches();
-			ViewBag.PossibleCustomers = customerRepository.GetAllCustomers();
-             return View(activityRepository.GetById(id));
+			Activity activity = context.Activities.Single(x => x.ActivityId == id);
+			ViewBag.PossibleCoaches = context.Coaches;
+			ViewBag.PossibleCustomers = context.Customers;
+			return View(activity);
         }
 
         //
@@ -81,15 +76,15 @@ namespace HairAndSoleless.Controllers
         [HttpPost]
         public ActionResult Edit(Activity activity)
         {
-            if (ModelState.IsValid) {
-                activityRepository.InsertOrUpdate(activity);
-                activityRepository.Save();
+            if (ModelState.IsValid)
+            {
+				context.Entry(activity).State = EntityState.Modified;
+                context.SaveChanges();
                 return RedirectToAction("Index");
-            } else {
-				ViewBag.PossibleCoaches = coachRepository.GetAllCoaches();
-				ViewBag.PossibleCustomers = customerRepository.GetAllCustomers();
-				return View();
-			}
+            }
+			ViewBag.PossibleCoaches = context.Coaches;
+			ViewBag.PossibleCustomers = context.Customers;
+            return View(activity);
         }
 
         //
@@ -97,7 +92,8 @@ namespace HairAndSoleless.Controllers
  
         public ActionResult Delete(int id)
         {
-            return View(activityRepository.GetById(id));
+			Activity activity = context.Activities.Single(x => x.ActivityId == id);
+            return View(activity);
         }
 
         //
@@ -106,11 +102,10 @@ namespace HairAndSoleless.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            activityRepository.Delete(id);
-            activityRepository.Save();
-
+            Activity activity = context.Activities.Single(x => x.ActivityId == id);
+            context.Activities.Remove(activity);
+			context.SaveChanges();
             return RedirectToAction("Index");
         }
     }
 }
-

@@ -1,5 +1,4 @@
-﻿using System;
-using Specs.EndToEnd.Steps.Infrastructure;
+﻿using Specs.EndToEnd.Steps.Infrastructure;
 
 namespace Specs.EndToEnd.Steps.PageObjects
 {

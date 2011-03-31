@@ -20,14 +20,12 @@ namespace HairAndSoleless.Models
         [DataType(DataType.MultilineText)]
         public string Comments { get; set; }
 
+        [Display(Name = "Coach"), Required]
         public int CoachId { get; set; }
-        [Required]
         public Coach Coach { get; set; }
 
+        [Display(Name = "Customer"), Required]
         public int CustomerId { get; set; }
-        [Required]
         public Customer Customer { get; set; }
-
-        //public int I { get; set; }
     }
 }

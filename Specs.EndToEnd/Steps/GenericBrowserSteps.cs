@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using Should.Fluent;
+﻿using Should.Fluent;
 using Specs.EndToEnd.Steps.Infrastructure;
 using TechTalk.SpecFlow;
 
@@ -19,7 +18,7 @@ namespace Specs.EndToEnd.Steps
 
         [Then(@"I should be on the '(.*)' page")]
         [Then(@"I should still be on the '(.*)' page")]
-        public void ThenIShouldBeOnTheCoachesPage(string pageTitle)
+        public void IShouldBeOnPage(string pageTitle)
         {
             WebBrowser.Current.Title.Should().Equal(pageTitle); 
         }

@@ -1,10 +1,10 @@
 @model IEnumerable<HairAndSoleless.Models.Activity>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Activities";
 }
 
-<h2>Index</h2>
+<h2>Activities</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -39,7 +39,7 @@
             @Html.ActionLink("Details", "Details", new { id=item.ActivityId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ActivityId })
         </td>
-        <td>
+        <td id="Heading">
 			@item.Heading
         </td>
         <td>

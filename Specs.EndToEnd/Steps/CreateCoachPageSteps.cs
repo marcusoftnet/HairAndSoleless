@@ -1,6 +1,4 @@
-﻿using Should.Fluent;
-using Specs.EndToEnd.Steps.Infrastructure;
-using Specs.EndToEnd.Steps.PageObjects;
+﻿using Specs.EndToEnd.Steps.PageObjects;
 using TechTalk.SpecFlow;
 
 namespace Specs.EndToEnd.Steps

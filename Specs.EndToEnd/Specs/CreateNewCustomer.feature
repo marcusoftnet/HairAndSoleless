@@ -20,12 +20,12 @@ Scenario: Creating new customer without validation errors
 Scenario Outline: Creating new customer with missing values should give validation error
     Given I am on the 'Create Customer' page
 	When I create a customer with '<Field>' set to empty
-	Then a required field validation error for '<Field>' should be displayed
+	Then a required field validation error for '<Error message>' should be displayed
 		And I should still be on the 'Create Customer' page
 		
 Examples:
-	| Field   |
-	| Name    |
-	| Contact |
+	| Field   | Error message |
+	| Name    | Name          |
+	| Contact | Email address |
 
 	   	

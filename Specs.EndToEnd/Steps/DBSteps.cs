@@ -18,5 +18,25 @@ namespace Specs.EndToEnd.Steps
             DbHelper.RemoveCoachesByName(coachName);
         }
 
+        [Given(@"there are no activites for coach '(.*)' in the database")]
+        public void NoActivitiesForCoachWithName(string coachToDeleteActivitesFor)
+        {
+            DbHelper.RemoveActivitiesForCoachByName(coachToDeleteActivitesFor);
+        }
+
+        [Given(@"there is a coach named '(.*)' in the database")]
+        public void CreateCoachByName(string coachName)
+        {
+            DbHelper.CreateCoach(coachName, "test@email.com", "Test team");
+        }
+
+        [Given(@"there is a customer named '(.*)' in the database")]
+        public void CreateCustomerByName(string customerName)
+        {
+            DbHelper.CreateCustomer(customerName, "test@test.com");
+        }
+
+
+
     }
 }

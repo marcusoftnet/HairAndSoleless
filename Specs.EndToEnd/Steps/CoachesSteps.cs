@@ -18,8 +18,6 @@ namespace Specs.EndToEnd.Steps
             Page.GotoNewCoach();
         }
 
-        
-
         [Then(@"a customer named '(.*)' should be in the coach list")]
         public void ThenACustomerNamedTestCoachShouldBeInTheCoachList(string coachName)
         {

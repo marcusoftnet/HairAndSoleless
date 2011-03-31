@@ -29,7 +29,10 @@ namespace Specs.EndToEnd.Steps.Infrastructure
             var select = browser.SelectList(Find.ByName(name));
             if (select.Exists)
             {
-                select.Select(value);
+                if(string.IsNullOrWhiteSpace(value))
+                    select.SelectByValue(string.Empty);
+                else
+                    select.Select(value);                    
                 return;
             }
 
@@ -41,13 +44,5 @@ namespace Specs.EndToEnd.Steps.Infrastructure
             return from c in browser.TableCells.Filter(x => x.Id == cellId)
                    select c;
         }
-
-        public static bool ValidationErrorExistsFor(this Browser browser, string fieldWithError)
-        {
-            // TODO: Enabled?
-            return browser.Spans.Count(s => s.Enabled &&  
-                s.GetAttributeValue("data-valmsg-for") == fieldWithError) == 1;
-        }
-
     }
 }

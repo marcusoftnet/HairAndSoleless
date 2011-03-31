@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using Specs.EndToEnd.Steps.Infrastructure;
 using WatiN.Core;
 
@@ -9,7 +8,7 @@ namespace Specs.EndToEnd.Steps.PageObjects
 {
     public abstract class PageObjectBase
     {
-        protected readonly Browser Browser;
+        private readonly Browser Browser;
         private readonly string relativeUrl;
 
         protected PageObjectBase(Browser browser, string relativeUrl)
